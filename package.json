@@ -4,7 +4,8 @@
   "description": "dev social media",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
   },
   "keywords": [
     "nodejs",
@@ -13,6 +14,10 @@
   "author": "Krishna Priya",
   "license": "ISC",
   "dependencies": {
-    "express": "^5.1.0"
+    "bcrypt": "^6.0.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.18.1",
+    "validator": "^13.15.15",
+    "zod": "^4.1.11"
   }
 }
