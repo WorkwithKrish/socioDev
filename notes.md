@@ -3,7 +3,7 @@
 - node_modules, package.json, package-lock.json
 - Install express
 - Create a server
-- Listen to port 7777
+- Listen to port 3000
 - Write request handlers for /test , /hello
 - Install nodemon and update scripts inside package.json
 - What are dependencies
@@ -37,7 +37,7 @@
 - Create a free cluster on MongoDB official website (Mongo Atlas)
 - Install mongoose library
 - Connect your application to the Database "Connection-url"/devTinder
-- Call the connectDB function and connect to database before starting application on 7777
+- Call the connectDB function and connect to database before starting application on 3000
 - Create a userSchema & user Model
 - Create POST /sigup API to add data to database
 - Push some documents using API calls from postman
