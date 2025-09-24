@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
 const connectDB = async () => {
-  await mongoose.connect(
-    "mongodb+srv://foreverNode:forever%40Node%23243@forevernode.tiohcqk.mongodb.net/socio-dev"
-  );
+  await mongoose.connect(process.env.DB_CONNECTION_STRING);
 };
 
-module.exports = connectDB;
+module.exports = {
+  connectDB,
+};
