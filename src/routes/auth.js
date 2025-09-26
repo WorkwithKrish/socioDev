@@ -51,8 +51,14 @@ authRouter.post("/login", async (req, res) => {
       const token = await user.getJWT();
 
       res.cookie("token", token, {
+        httpOnly: true, // not accessible via JS
         expires: new Date(Date.now() + 8 * 3600000),
+        secure: process.env.NODE_ENV === "production", // only over HTTPS
+        sameSite: "none", // allow cross-site cookies
+        domain: process.env.NODE_ENV === "production" ? "devkp.xyz" : undefined, // domain only for prod
+        path: "/",
       });
+
       res.send(user);
     } else {
       throw new Error("Invalid credentials");
