@@ -54,9 +54,10 @@ authRouter.post("/login", async (req, res) => {
       res.cookie("token", token, {
         httpOnly: true,
         expires: new Date(Date.now() + 8 * 3600000), // 8 hours
-        secure: process.env.NODE_ENV === "production",
+        secure: true, // process.env.NODE_ENV === "production",
         sameSite: "none",
         path: "/", // valid for entire sites
+        domain: "devkp.xyz", // process.env.NODE_ENV === "production" ? "devkp.xyz" : undefined, // domain only for prod
       });
 
       res.send(user);
