@@ -57,7 +57,7 @@ authRouter.post("/login", async (req, res) => {
         secure: true, // process.env.NODE_ENV === "production",
         sameSite: "none",
         path: "/", // valid for entire sites
-        domain: "devkp.xyz", // process.env.NODE_ENV === "production" ? "devkp.xyz" : undefined, // domain only for prod
+        domain: ".devkp.xyz", // process.env.NODE_ENV === "production" ? "devkp.xyz" : undefined, // domain only for prod
       });
 
       res.send(user);
