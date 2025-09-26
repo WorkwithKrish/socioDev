@@ -49,12 +49,13 @@ authRouter.post("/login", async (req, res) => {
 
     if (isPasswordValid) {
       const token = await user.getJWT();
+      // process.env.NODE_ENV === "production" ? "none" : "lax",
 
       res.cookie("token", token, {
         httpOnly: true,
         expires: new Date(Date.now() + 8 * 3600000), // 8 hours
         secure: process.env.NODE_ENV === "production",
-        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+        sameSite: "none",
         path: "/", // valid for entire sites
       });
 
