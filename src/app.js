@@ -5,18 +5,12 @@ const app = express();
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 require("./utils/cronJobs");
-const allowedOrigins = ["http://localhost:5173", "http://example.com"];
 
 app.use(
   cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true,
+    origin: ["http://localhost:5173", "https://devkp.xyz"], // allow frontend(s)
+    // methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true, // if you are sending cookies/JWT
   })
 );
 app.use(express.json());
