@@ -55,7 +55,7 @@ authRouter.post("/login", async (req, res) => {
         expires: new Date(Date.now() + 8 * 3600000), // 8 hours
         secure: process.env.NODE_ENV === "production",
         sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
-        path: "/", // valid for entire site
+        path: "/", // valid for entire sites
       });
 
       res.send(user);
