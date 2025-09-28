@@ -26,12 +26,11 @@ authRouter.post("/signup", async (req, res) => {
 
     const savedUser = await user.save();
     const token = await savedUser.getJWT();
-    res.cookie("token", token, {
-      httpOnly: true, // not accessible via JS
+    res.cookie("auth_token", token, {
+      httpOnly: true,
       expires: new Date(Date.now() + 8 * 3600000),
-      secure: process.env.NODE_ENV === "production", // only over HTTPS
-      sameSite: "none", // allow cross-site cookies
-      domain: process.env.NODE_ENV === "production" ? "devkp.xyz" : undefined, // domain only for prod
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
       path: "/",
     });
 
@@ -55,12 +54,11 @@ authRouter.post("/login", async (req, res) => {
       const token = await user.getJWT();
       // process.env.NODE_ENV === "production" ? "none" : "lax",
 
-      res.cookie("token", token, {
-        httpOnly: true, // not accessible via JS
+      res.cookie("auth_token", token, {
+        httpOnly: true,
         expires: new Date(Date.now() + 8 * 3600000),
-        secure: process.env.NODE_ENV === "production", // only over HTTPS
-        sameSite: "none", // allow cross-site cookies
-        domain: process.env.NODE_ENV === "production" ? "devkp.xyz" : undefined, // domain only for prod
+        secure: process.env.NODE_ENV === "production",
+        sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
         path: "/",
       });
 
